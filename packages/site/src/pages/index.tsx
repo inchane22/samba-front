@@ -129,7 +129,7 @@ const Index = () => {
   return (
     <Container>
       <Heading>
-        Welcome to <Span>template-snap</Span>
+        Hey
       </Heading>
       <Subtitle>
         Get started by editing <code>src/index.ts</code>

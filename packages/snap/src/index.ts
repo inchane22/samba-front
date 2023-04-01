@@ -1,5 +1,6 @@
 import { OnRpcRequestHandler } from '@metamask/snaps-types';
-import { panel, text } from '@metamask/snaps-ui';
+import { heading, panel, text } from '@metamask/snaps-ui';
+import { OnTransactionHandler } from '@metamask/snap-types';
 
 /**
  * Handle incoming JSON-RPC requests, sent through `wallet_invokeSnap`.
@@ -31,3 +32,22 @@ export const onRpcRequest: OnRpcRequestHandler = ({ origin, request }) => {
       throw new Error('Method not found.');
   }
 };
+
+export const onTransaction: OnTransactionHandler = async ({ transaction }) => {
+  console.log(transaction);
+
+  // Adicione a lógica para gerar informações (insights) sobre a transação aqui
+  const insights = {
+    // Exemplo: gasPrice: ...,
+    // Exemplo: estimatedTime: ...,
+  };
+
+  return {
+    insights,
+    content: panel([
+      heading('My Custom Confirmation'),
+      text(`Here is the transaction you are about to send:`),
+    ]),
+  };
+};
+
